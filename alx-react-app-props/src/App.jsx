@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -7,11 +7,7 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile'; // Importing UserProfile component
-import { UserContext } from './UserContext';
-
-
-// 1. Create UserContext
-export const UserContext = createContext();
+import { UserContext } from './UserContext'; // Import UserContext
 
 function App() {
   const [count, setCount] = useState(0);
@@ -46,7 +42,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </UserContext.Provider> {/* Close the Provider */};
+    </UserContext.Provider> {/* Close the Provider */}
+  );
 }
 
 export default App;

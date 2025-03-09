@@ -1,4 +1,4 @@
 import { createContext } from 'react';
 
-// Create the UserContext
+// 1. Create UserContext
 export const UserContext = createContext();
