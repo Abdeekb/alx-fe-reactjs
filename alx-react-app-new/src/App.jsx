@@ -6,8 +6,7 @@ import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import UserProfile from './components/UserProfile'; // Importing UserProfile component
-import Header from './components/Header';
+import UserProfile from './components/UserProfile';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +17,15 @@ function App() {
       <MainContent />
       <Footer />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" /> {/* Using UserProfile component */}
+      
+      {/* Counter Section */}
+      <div>
+        <h2>Counter: {count}</h2>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+        <button onClick={() => setCount(count - 1)}>Decrement</button>
+        <button onClick={() => setCount(0)}>Reset</button>
+      </div>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -26,12 +34,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      
       <WelcomeMessage />
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
