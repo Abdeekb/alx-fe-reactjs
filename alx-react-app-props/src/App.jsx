@@ -7,6 +7,8 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile'; // Importing UserProfile component
+import { UserContext } from './UserContext';
+
 
 // 1. Create UserContext
 export const UserContext = createContext();
