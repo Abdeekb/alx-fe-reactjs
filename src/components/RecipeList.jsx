@@ -1,18 +1,26 @@
-import { useRecipeStore } from "../store/recipeStore";
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom to navigate
+// src/components/RecipeList.jsx
+
+import React, { useEffect } from 'react';
+import { useRecipeStore } from '../store/recipeStore';
+import { Link } from 'react-router-dom';
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.recipes);
+  const addRecipe = useRecipeStore(state => state.addRecipe);
+
+  // Adding some sample recipes
+  useEffect(() => {
+    addRecipe({ id: 1, title: 'Spaghetti Bolognese', description: 'A classic Italian dish.' });
+    addRecipe({ id: 2, title: 'Chicken Curry', description: 'A spicy and flavorful dish.' });
+  }, [addRecipe]);
 
   return (
     <div>
-      <h2>Recipes</h2>
+      <h1>Recipe List</h1>
       <ul>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-            <Link to={`/recipes/${recipe.id}`}>View Details</Link>  {/* Link to recipe details page */}
+            <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
           </li>
         ))}
       </ul>

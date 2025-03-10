@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useRecipeStore } from "./store/recipeStore";  // Correct path
-import RecipeDetails from './components/RecipeDetails';  // Ensure the correct path
-import RecipeList from './components/RecipeList';  // Ensure the correct path
+// src/App.jsx
 
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RecipeList from './components/RecipeList';
+import RecipeDetails from './components/RecipeDetails';
+
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<RecipeList />} />
-        <Route path="/recipes/:id" element={<RecipeDetails />} /> {/* Recipe details page */}
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
