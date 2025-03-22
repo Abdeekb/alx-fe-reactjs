@@ -1,24 +1,21 @@
 import { useState } from 'react';
 
 const RegistrationForm = () => {
-  // Use useState to manage form values
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  // Use individual useState hooks for each form field
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name === 'username') setUsername(value);
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
+    console.log('Form Submitted:', { username, email, password });
   };
 
   return (
@@ -28,7 +25,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username} // controlled component
+          value={username} // controlled component
           onChange={handleChange}
         />
       </div>
@@ -38,7 +35,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email} // controlled component
+          value={email} // controlled component
           onChange={handleChange}
         />
       </div>
@@ -48,7 +45,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password} // controlled component
+          value={password} // controlled component
           onChange={handleChange}
         />
       </div>
