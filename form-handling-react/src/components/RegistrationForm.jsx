@@ -5,6 +5,13 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // State for errors
+  const [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: ''
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,6 +22,19 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Basic validation logic
+    const newErrors = {};
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+
+    // If there are errors, set the errors state and return
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     console.log('Form Submitted:', { username, email, password });
   };
 
@@ -28,6 +48,7 @@ const RegistrationForm = () => {
           value={username} // controlled component
           onChange={handleChange}
         />
+        {errors.username && <p>{errors.username}</p>}
       </div>
 
       <div>
@@ -38,6 +59,7 @@ const RegistrationForm = () => {
           value={email} // controlled component
           onChange={handleChange}
         />
+        {errors.email && <p>{errors.email}</p>}
       </div>
 
       <div>
@@ -48,6 +70,7 @@ const RegistrationForm = () => {
           value={password} // controlled component
           onChange={handleChange}
         />
+        {errors.password && <p>{errors.password}</p>}
       </div>
 
       <button type="submit">Register</button>
